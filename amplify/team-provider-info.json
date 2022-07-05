@@ -10,6 +10,11 @@
       "StackName": "amplify-amplifypdmli-sampledev-112706",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:970622592715:stack/amplify-amplifypdmli-sampledev-112706/96b194f0-fc01-11ec-887a-0a8e026d8d06",
       "AmplifyAppId": "d35g16pe611onn"
+    },
+    "categories": {
+      "auth": {
+        "amplifypdmlif51b8679": {}
+      }
     }
   }
 }
