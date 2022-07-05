@@ -3,6 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AmplifyAuthenticatorModule } from "@aws-amplify/ui-angular";
+
+// @ts-ignore
+import awsconfig from "../aws-exports"
+import { Amplify } from "aws-amplify";
+
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
@@ -10,9 +17,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AmplifyAuthenticatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
