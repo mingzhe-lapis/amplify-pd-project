@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'mentor',
     loadChildren: () => import('./mentor-page/mentor-page.module').then((m) => m.MentorPageModule),
+  },
+  {
+    path: 'mentee',
+    loadChildren: () => import('./mentee-page/mentee-page.module').then((m) => m.MenteePageModule),
   }
 ];
 

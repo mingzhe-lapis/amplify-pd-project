@@ -29,3 +29,36 @@ subscription OnDeleteMentor {
     updatedAt
   }
 }
+subscription OnCreateMentee($owner: String) {
+  onCreateMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnUpdateMentee($owner: String) {
+  onUpdateMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnDeleteMentee($owner: String) {
+  onDeleteMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}

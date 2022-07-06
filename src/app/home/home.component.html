@@ -11,6 +11,42 @@
 
 
 <div class="container">
-  <img src="assets/images/amplify-logo.png" alt="logo" class="logo">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h4>Public table</h4>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Everyone can read, create, update and delete this table
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" routerLink="/mentor">Mentor List</button>
 
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h4>Private table</h4>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            You can read, create, update and delete this table only if you are logged in
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" routerLink="/mentee">Mentee List</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!--  <img src="assets/images/amplify-logo.png" alt="logo" class="logo">-->
 </div>

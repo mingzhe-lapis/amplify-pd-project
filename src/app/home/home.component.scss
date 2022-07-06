@@ -2,16 +2,24 @@
   flex: 1 1 auto;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+//.container {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  justify-content: center;
+//  height: 100vh;
+//
+//  img {
+//    max-height: 100%;
+//    max-width: 100%;
+//    object-fit: contain;
+//  }
+//}
 
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-  }
+mat-card {
+  margin: 16px auto;
+  padding: 16px;
+  background-color: rgb(58, 58, 58);
+  border: solid 1px rgb(58, 58, 58);
+  min-width: 50%;
 }

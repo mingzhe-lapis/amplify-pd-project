@@ -26,3 +26,32 @@ query ListMentors(
     nextToken
   }
 }
+query GetMentee($id: ID!) {
+  getMentee(id: $id) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListMentees(
+  $filter: ModelMenteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMentees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      city
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+  }
+}

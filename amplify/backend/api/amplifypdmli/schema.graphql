@@ -8,3 +8,10 @@ type Mentor @model {
   description: String
   city: String
 }
+
+type Mentee @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String!
+  description: String
+  city: String
+}

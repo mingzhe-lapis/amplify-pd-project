@@ -38,3 +38,45 @@ mutation DeleteMentor(
     updatedAt
   }
 }
+mutation CreateMentee(
+  $input: CreateMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  createMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateMentee(
+  $input: UpdateMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  updateMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteMentee(
+  $input: DeleteMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  deleteMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}

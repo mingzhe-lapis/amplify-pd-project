@@ -13,6 +13,9 @@ export type __SubscriptionContainer = {
   onCreateMentor: OnCreateMentorSubscription;
   onUpdateMentor: OnUpdateMentorSubscription;
   onDeleteMentor: OnDeleteMentorSubscription;
+  onCreateMentee: OnCreateMenteeSubscription;
+  onUpdateMentee: OnUpdateMenteeSubscription;
+  onDeleteMentee: OnDeleteMenteeSubscription;
 };
 
 export type CreateMentorInput = {
@@ -91,6 +94,44 @@ export type DeleteMentorInput = {
   id: string;
 };
 
+export type CreateMenteeInput = {
+  id?: string | null;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+};
+
+export type ModelMenteeConditionInput = {
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelMenteeConditionInput | null> | null;
+  or?: Array<ModelMenteeConditionInput | null> | null;
+  not?: ModelMenteeConditionInput | null;
+};
+
+export type Mentee = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type UpdateMenteeInput = {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  city?: string | null;
+};
+
+export type DeleteMenteeInput = {
+  id: string;
+};
+
 export type ModelMentorFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
@@ -120,6 +161,22 @@ export type ModelIDInput = {
 export type ModelMentorConnection = {
   __typename: "ModelMentorConnection";
   items: Array<Mentor | null>;
+  nextToken?: string | null;
+};
+
+export type ModelMenteeFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelMenteeFilterInput | null> | null;
+  or?: Array<ModelMenteeFilterInput | null> | null;
+  not?: ModelMenteeFilterInput | null;
+};
+
+export type ModelMenteeConnection = {
+  __typename: "ModelMenteeConnection";
+  items: Array<Mentee | null>;
   nextToken?: string | null;
 };
 
@@ -153,6 +210,39 @@ export type DeleteMentorMutation = {
   updatedAt: string;
 };
 
+export type CreateMenteeMutation = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type UpdateMenteeMutation = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type DeleteMenteeMutation = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
 export type GetMentorQuery = {
   __typename: "Mentor";
   id: string;
@@ -173,6 +263,32 @@ export type ListMentorsQuery = {
     city?: string | null;
     createdAt: string;
     updatedAt: string;
+  } | null>;
+  nextToken?: string | null;
+};
+
+export type GetMenteeQuery = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type ListMenteesQuery = {
+  __typename: "ModelMenteeConnection";
+  items: Array<{
+    __typename: "Mentee";
+    id: string;
+    name: string;
+    description?: string | null;
+    city?: string | null;
+    createdAt: string;
+    updatedAt: string;
+    owner?: string | null;
   } | null>;
   nextToken?: string | null;
 };
@@ -205,6 +321,39 @@ export type OnDeleteMentorSubscription = {
   city?: string | null;
   createdAt: string;
   updatedAt: string;
+};
+
+export type OnCreateMenteeSubscription = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type OnUpdateMenteeSubscription = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
+};
+
+export type OnDeleteMenteeSubscription = {
+  __typename: "Mentee";
+  id: string;
+  name: string;
+  description?: string | null;
+  city?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  owner?: string | null;
 };
 
 @Injectable({
@@ -289,6 +438,87 @@ export class APIService {
     )) as any;
     return <DeleteMentorMutation>response.data.deleteMentor;
   }
+  async CreateMentee(
+    input: CreateMenteeInput,
+    condition?: ModelMenteeConditionInput
+  ): Promise<CreateMenteeMutation> {
+    const statement = `mutation CreateMentee($input: CreateMenteeInput!, $condition: ModelMenteeConditionInput) {
+        createMentee(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateMenteeMutation>response.data.createMentee;
+  }
+  async UpdateMentee(
+    input: UpdateMenteeInput,
+    condition?: ModelMenteeConditionInput
+  ): Promise<UpdateMenteeMutation> {
+    const statement = `mutation UpdateMentee($input: UpdateMenteeInput!, $condition: ModelMenteeConditionInput) {
+        updateMentee(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateMenteeMutation>response.data.updateMentee;
+  }
+  async DeleteMentee(
+    input: DeleteMenteeInput,
+    condition?: ModelMenteeConditionInput
+  ): Promise<DeleteMenteeMutation> {
+    const statement = `mutation DeleteMentee($input: DeleteMenteeInput!, $condition: ModelMenteeConditionInput) {
+        deleteMentee(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteMenteeMutation>response.data.deleteMentee;
+  }
   async GetMentor(id: string): Promise<GetMentorQuery> {
     const statement = `query GetMentor($id: ID!) {
         getMentor(id: $id) {
@@ -343,6 +573,63 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListMentorsQuery>response.data.listMentors;
+  }
+  async GetMentee(id: string): Promise<GetMenteeQuery> {
+    const statement = `query GetMentee($id: ID!) {
+        getMentee(id: $id) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetMenteeQuery>response.data.getMentee;
+  }
+  async ListMentees(
+    filter?: ModelMenteeFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListMenteesQuery> {
+    const statement = `query ListMentees($filter: ModelMenteeFilterInput, $limit: Int, $nextToken: String) {
+        listMentees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            description
+            city
+            createdAt
+            updatedAt
+            owner
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListMenteesQuery>response.data.listMentees;
   }
   OnCreateMentorListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateMentor">>
@@ -403,4 +690,88 @@ export class APIService {
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteMentor">>
   >;
+
+  OnCreateMenteeListener(
+    owner?: string
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateMentee">>
+  > {
+    const statement = `subscription OnCreateMentee($owner: String) {
+        onCreateMentee(owner: $owner) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (owner) {
+      gqlAPIServiceArguments.owner = owner;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateMentee">>
+    >;
+  }
+
+  OnUpdateMenteeListener(
+    owner?: string
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateMentee">>
+  > {
+    const statement = `subscription OnUpdateMentee($owner: String) {
+        onUpdateMentee(owner: $owner) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (owner) {
+      gqlAPIServiceArguments.owner = owner;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateMentee">>
+    >;
+  }
+
+  OnDeleteMenteeListener(
+    owner?: string
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteMentee">>
+  > {
+    const statement = `subscription OnDeleteMentee($owner: String) {
+        onDeleteMentee(owner: $owner) {
+          __typename
+          id
+          name
+          description
+          city
+          createdAt
+          updatedAt
+          owner
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (owner) {
+      gqlAPIServiceArguments.owner = owner;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteMentee">>
+    >;
+  }
 }
