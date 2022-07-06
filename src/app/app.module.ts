@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { AmplifyAuthenticatorModule } from "@aws-amplify/ui-angular";
 // @ts-ignore
-import awsconfig from "../aws-exports"
+import awsconfig from "../aws-exports";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 Amplify.configure(awsconfig);
 
@@ -18,7 +19,8 @@ Amplify.configure(awsconfig);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AmplifyAuthenticatorModule
+    AmplifyAuthenticatorModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
