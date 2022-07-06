@@ -10,25 +10,25 @@ export interface SubscriptionResponse<T> {
 }
 
 export type __SubscriptionContainer = {
-  onCreateTodo: OnCreateTodoSubscription;
-  onUpdateTodo: OnUpdateTodoSubscription;
-  onDeleteTodo: OnDeleteTodoSubscription;
+  onCreateMentor: OnCreateMentorSubscription;
+  onUpdateMentor: OnUpdateMentorSubscription;
+  onDeleteMentor: OnDeleteMentorSubscription;
 };
 
-export type CreateTodoInput = {
+export type CreateMentorInput = {
   id?: string | null;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
 };
 
-export type ModelTodoConditionInput = {
+export type ModelMentorConditionInput = {
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
-  priority?: ModelStringInput | null;
-  and?: Array<ModelTodoConditionInput | null> | null;
-  or?: Array<ModelTodoConditionInput | null> | null;
-  not?: ModelTodoConditionInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelMentorConditionInput | null> | null;
+  or?: Array<ModelMentorConditionInput | null> | null;
+  not?: ModelMentorConditionInput | null;
 };
 
 export type ModelStringInput = {
@@ -70,35 +70,35 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type Todo = {
-  __typename: "Todo";
+export type Mentor = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type UpdateTodoInput = {
+export type UpdateMentorInput = {
   id: string;
   name?: string | null;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
 };
 
-export type DeleteTodoInput = {
+export type DeleteMentorInput = {
   id: string;
 };
 
-export type ModelTodoFilterInput = {
+export type ModelMentorFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
-  priority?: ModelStringInput | null;
-  and?: Array<ModelTodoFilterInput | null> | null;
-  or?: Array<ModelTodoFilterInput | null> | null;
-  not?: ModelTodoFilterInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelMentorFilterInput | null> | null;
+  or?: Array<ModelMentorFilterInput | null> | null;
+  not?: ModelMentorFilterInput | null;
 };
 
 export type ModelIDInput = {
@@ -117,92 +117,92 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection";
-  items: Array<Todo | null>;
+export type ModelMentorConnection = {
+  __typename: "ModelMentorConnection";
+  items: Array<Mentor | null>;
   nextToken?: string | null;
 };
 
-export type CreateTodoMutation = {
-  __typename: "Todo";
+export type CreateMentorMutation = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type UpdateTodoMutation = {
-  __typename: "Todo";
+export type UpdateMentorMutation = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type DeleteTodoMutation = {
-  __typename: "Todo";
+export type DeleteMentorMutation = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type GetTodoQuery = {
-  __typename: "Todo";
+export type GetMentorQuery = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type ListTodosQuery = {
-  __typename: "ModelTodoConnection";
+export type ListMentorsQuery = {
+  __typename: "ModelMentorConnection";
   items: Array<{
-    __typename: "Todo";
+    __typename: "Mentor";
     id: string;
     name: string;
     description?: string | null;
-    priority?: string | null;
+    city?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null>;
   nextToken?: string | null;
 };
 
-export type OnCreateTodoSubscription = {
-  __typename: "Todo";
+export type OnCreateMentorSubscription = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type OnUpdateTodoSubscription = {
-  __typename: "Todo";
+export type OnUpdateMentorSubscription = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-export type OnDeleteTodoSubscription = {
-  __typename: "Todo";
+export type OnDeleteMentorSubscription = {
+  __typename: "Mentor";
   id: string;
   name: string;
   description?: string | null;
-  priority?: string | null;
+  city?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -211,17 +211,17 @@ export type OnDeleteTodoSubscription = {
   providedIn: "root"
 })
 export class APIService {
-  async CreateTodo(
-    input: CreateTodoInput,
-    condition?: ModelTodoConditionInput
-  ): Promise<CreateTodoMutation> {
-    const statement = `mutation CreateTodo($input: CreateTodoInput!, $condition: ModelTodoConditionInput) {
-        createTodo(input: $input, condition: $condition) {
+  async CreateMentor(
+    input: CreateMentorInput,
+    condition?: ModelMentorConditionInput
+  ): Promise<CreateMentorMutation> {
+    const statement = `mutation CreateMentor($input: CreateMentorInput!, $condition: ModelMentorConditionInput) {
+        createMentor(input: $input, condition: $condition) {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
@@ -235,19 +235,19 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <CreateTodoMutation>response.data.createTodo;
+    return <CreateMentorMutation>response.data.createMentor;
   }
-  async UpdateTodo(
-    input: UpdateTodoInput,
-    condition?: ModelTodoConditionInput
-  ): Promise<UpdateTodoMutation> {
-    const statement = `mutation UpdateTodo($input: UpdateTodoInput!, $condition: ModelTodoConditionInput) {
-        updateTodo(input: $input, condition: $condition) {
+  async UpdateMentor(
+    input: UpdateMentorInput,
+    condition?: ModelMentorConditionInput
+  ): Promise<UpdateMentorMutation> {
+    const statement = `mutation UpdateMentor($input: UpdateMentorInput!, $condition: ModelMentorConditionInput) {
+        updateMentor(input: $input, condition: $condition) {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
@@ -261,19 +261,19 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <UpdateTodoMutation>response.data.updateTodo;
+    return <UpdateMentorMutation>response.data.updateMentor;
   }
-  async DeleteTodo(
-    input: DeleteTodoInput,
-    condition?: ModelTodoConditionInput
-  ): Promise<DeleteTodoMutation> {
-    const statement = `mutation DeleteTodo($input: DeleteTodoInput!, $condition: ModelTodoConditionInput) {
-        deleteTodo(input: $input, condition: $condition) {
+  async DeleteMentor(
+    input: DeleteMentorInput,
+    condition?: ModelMentorConditionInput
+  ): Promise<DeleteMentorMutation> {
+    const statement = `mutation DeleteMentor($input: DeleteMentorInput!, $condition: ModelMentorConditionInput) {
+        deleteMentor(input: $input, condition: $condition) {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
@@ -287,16 +287,16 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <DeleteTodoMutation>response.data.deleteTodo;
+    return <DeleteMentorMutation>response.data.deleteMentor;
   }
-  async GetTodo(id: string): Promise<GetTodoQuery> {
-    const statement = `query GetTodo($id: ID!) {
-        getTodo(id: $id) {
+  async GetMentor(id: string): Promise<GetMentorQuery> {
+    const statement = `query GetMentor($id: ID!) {
+        getMentor(id: $id) {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
@@ -307,22 +307,22 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <GetTodoQuery>response.data.getTodo;
+    return <GetMentorQuery>response.data.getMentor;
   }
-  async ListTodos(
-    filter?: ModelTodoFilterInput,
+  async ListMentors(
+    filter?: ModelMentorFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ListTodosQuery> {
-    const statement = `query ListTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String) {
-        listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ListMentorsQuery> {
+    const statement = `query ListMentors($filter: ModelMentorFilterInput, $limit: Int, $nextToken: String) {
+        listMentors(filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
             id
             name
             description
-            priority
+            city
             createdAt
             updatedAt
           }
@@ -342,65 +342,65 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ListTodosQuery>response.data.listTodos;
+    return <ListMentorsQuery>response.data.listMentors;
   }
-  OnCreateTodoListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTodo">>
+  OnCreateMentorListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateMentor">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnCreateTodo {
-        onCreateTodo {
+      `subscription OnCreateMentor {
+        onCreateMentor {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTodo">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateMentor">>
   >;
 
-  OnUpdateTodoListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTodo">>
+  OnUpdateMentorListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateMentor">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnUpdateTodo {
-        onUpdateTodo {
+      `subscription OnUpdateMentor {
+        onUpdateMentor {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTodo">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateMentor">>
   >;
 
-  OnDeleteTodoListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTodo">>
+  OnDeleteMentorListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteMentor">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnDeleteTodo {
-        onDeleteTodo {
+      `subscription OnDeleteMentor {
+        onDeleteMentor {
           __typename
           id
           name
           description
-          priority
+          city
           createdAt
           updatedAt
         }
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTodo">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteMentor">>
   >;
 }

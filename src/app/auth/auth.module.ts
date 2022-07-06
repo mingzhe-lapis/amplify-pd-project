@@ -7,6 +7,8 @@ import { AmplifyAuthenticatorModule } from "@aws-amplify/ui-angular";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MatButtonModule } from "@angular/material/button";
     AmplifyAuthenticatorModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatIconModule
   ]
 })
 export class AuthModule { }

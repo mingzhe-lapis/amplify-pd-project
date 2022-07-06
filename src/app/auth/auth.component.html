@@ -1,5 +1,9 @@
 <mat-toolbar>
-  <span routerLink="/home">Amplify PD</span>
+  <span>Amplify PD</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
 </mat-toolbar>
 
 <amplify-authenticator>
@@ -8,13 +12,15 @@
     let-user="user"
     let-signOut="signOut"
   >
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Welcome {{ user.username }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <button mat-raised-button color="accent" (click)="signOut()">Sign Out</button>
-      </mat-card-content>
-    </mat-card>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Welcome {{ user.username }}</h1>
+          <button mat-raised-button routerLink="/mentor">Check Mentor list</button>
+          <button mat-raised-button (click)="signOut()">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
   </ng-template>
 </amplify-authenticator>

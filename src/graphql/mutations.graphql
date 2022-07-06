@@ -1,39 +1,39 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation CreateMentor(
+  $input: CreateMentorInput!
+  $condition: ModelMentorConditionInput
 ) {
-  createTodo(input: $input, condition: $condition) {
+  createMentor(input: $input, condition: $condition) {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }
 }
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation UpdateMentor(
+  $input: UpdateMentorInput!
+  $condition: ModelMentorConditionInput
 ) {
-  updateTodo(input: $input, condition: $condition) {
+  updateMentor(input: $input, condition: $condition) {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }
 }
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
+mutation DeleteMentor(
+  $input: DeleteMentorInput!
+  $condition: ModelMentorConditionInput
 ) {
-  deleteTodo(input: $input, condition: $condition) {
+  deleteMentor(input: $input, condition: $condition) {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }

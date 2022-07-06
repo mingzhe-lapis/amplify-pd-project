@@ -1,25 +1,25 @@
 # this is an auto generated file. This will be overwritten
-query GetTodo($id: ID!) {
-  getTodo(id: $id) {
+query GetMentor($id: ID!) {
+  getMentor(id: $id) {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }
 }
-query ListTodos(
-  $filter: ModelTodoFilterInput
+query ListMentors(
+  $filter: ModelMentorFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listMentors(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name
       description
-      priority
+      city
       createdAt
       updatedAt
     }

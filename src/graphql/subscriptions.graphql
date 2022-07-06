@@ -1,30 +1,30 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTodo {
-  onCreateTodo {
+subscription OnCreateMentor {
+  onCreateMentor {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateTodo {
-  onUpdateTodo {
+subscription OnUpdateMentor {
+  onUpdateMentor {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteTodo {
-  onDeleteTodo {
+subscription OnDeleteMentor {
+  onDeleteMentor {
     id
     name
     description
-    priority
+    city
     createdAt
     updatedAt
   }

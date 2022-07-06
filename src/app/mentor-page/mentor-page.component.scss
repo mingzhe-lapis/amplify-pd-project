@@ -1,0 +1,39 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mentor-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+  .form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    margin: 16px auto;
+    padding: 16px;
+    background-color: rgb(58, 58, 58);
+    border: solid 1px rgb(58, 58, 58);
+
+    label {
+      color: white;
+      padding-right: 1rem;
+    }
+
+    input {
+      border-radius: 0.6rem;
+      margin: 0.5rem;;
+    }
+  }
+}
+
+mat-card {
+  margin: 16px auto;
+  padding: 16px;
+  background-color: rgb(58, 58, 58);
+  border: solid 1px rgb(58, 58, 58);
+  min-width: 30%;
+}
