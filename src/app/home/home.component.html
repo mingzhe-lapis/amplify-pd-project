@@ -26,11 +26,11 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="primary" routerLink="/mentor">Mentor List</button>
-
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile>
+
+    <mat-grid-tile *ngIf="user">
       <mat-card>
         <mat-card-header>
           <mat-card-title>

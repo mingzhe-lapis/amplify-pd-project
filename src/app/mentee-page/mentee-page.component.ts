@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { APIService, Mentee, Mentor } from "../API.service";
+import { APIService, DeleteMenteeInput, Mentee, Mentor } from "../API.service";
 import { Subscription } from "rxjs";
+
+import { Auth } from 'aws-amplify';
+
 
 @Component({
   selector: 'app-mentee-page',
@@ -12,6 +15,7 @@ export class MenteePageComponent implements OnInit {
   public createForm: FormGroup;
   public mentees: Mentee[] = [];
   private subscription: Subscription | null = null;
+  public user: any;
 
   constructor(private api: APIService, private fb: FormBuilder) {
     this.createForm = this.fb.group({
@@ -22,6 +26,17 @@ export class MenteePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    Auth.currentAuthenticatedUser().then(user => {
+        console.log(user);
+        this.user = user;
+      }
+    ).catch(err => {
+        console.log(err);
+      }
+    );
+
+
     this.api.ListMentees().then((event) => {
         this.mentees = event.items as Mentee[];
       }
@@ -30,8 +45,9 @@ export class MenteePageComponent implements OnInit {
       }
     );
 
+
     this.subscription = <Subscription>(
-      this.api.OnCreateMenteeListener().subscribe((event) => {
+      this.api.OnCreateMenteeListener(this.user).subscribe((event) => {
         const newMentee = event.value.data?.onCreateMentee as Mentee;
         this.mentees = [newMentee, ...this.mentees];
       })
@@ -59,7 +75,7 @@ export class MenteePageComponent implements OnInit {
 
   onDelete(mentee: Mentee) {
     this.api
-      .DeleteMentee(mentee)
+      .DeleteMentee({ id: mentee.id } as DeleteMenteeInput)
       .then((event) => {
         console.log('mentee deleted!');
       })

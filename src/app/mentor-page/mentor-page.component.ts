@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { APIService, Mentor } from "../API.service";
+import { APIService, DeleteMentorInput, Mentor } from "../API.service";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -60,7 +60,7 @@ export class MentorPageComponent implements OnInit, OnDestroy {
 
   onDelete(mentor: Mentor) {
     this.api
-      .DeleteMentor(mentor)
+      .DeleteMentor({ id: mentor.id } as DeleteMentorInput)
       .then((event) => {
         console.log('mentor deleted!');
       })
