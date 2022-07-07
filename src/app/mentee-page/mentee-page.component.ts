@@ -47,7 +47,7 @@ export class MenteePageComponent implements OnInit {
 
 
     this.subscription = <Subscription>(
-      this.api.OnCreateMenteeListener(this.user).subscribe((event) => {
+      this.api.OnCreateMenteeListener().subscribe((event) => {
         const newMentee = event.value.data?.onCreateMentee as Mentee;
         this.mentees = [newMentee, ...this.mentees];
       })
