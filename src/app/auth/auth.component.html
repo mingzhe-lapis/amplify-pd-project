@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <span>Amplify PD</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
+
+<amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Welcome {{ user.username }}</h1>
+<!--          <button mat-raised-button routerLink="/mentor">Check Mentor list</button>-->
+          <button mat-raised-button (click)="signOut()">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+</amplify-authenticator>

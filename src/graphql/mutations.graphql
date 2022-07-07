@@ -1,0 +1,82 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateMentor(
+  $input: CreateMentorInput!
+  $condition: ModelMentorConditionInput
+) {
+  createMentor(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateMentor(
+  $input: UpdateMentorInput!
+  $condition: ModelMentorConditionInput
+) {
+  updateMentor(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteMentor(
+  $input: DeleteMentorInput!
+  $condition: ModelMentorConditionInput
+) {
+  deleteMentor(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateMentee(
+  $input: CreateMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  createMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateMentee(
+  $input: UpdateMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  updateMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteMentee(
+  $input: DeleteMenteeInput!
+  $condition: ModelMenteeConditionInput
+) {
+  deleteMentee(input: $input, condition: $condition) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}

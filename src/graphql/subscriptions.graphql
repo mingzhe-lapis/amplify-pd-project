@@ -1,0 +1,64 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateMentor {
+  onCreateMentor {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateMentor {
+  onUpdateMentor {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteMentor {
+  onDeleteMentor {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateMentee($owner: String) {
+  onCreateMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnUpdateMentee($owner: String) {
+  onUpdateMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnDeleteMentee($owner: String) {
+  onDeleteMentee(owner: $owner) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}

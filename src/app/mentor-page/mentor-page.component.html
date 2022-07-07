@@ -1,0 +1,61 @@
+<mat-toolbar>
+  <span>Amplify PD</span>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button mat-icon-button class="example-icon favorite-icon" routerLink="/auth">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+
+<div class="mentor-page">
+
+  <div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)">
+      <div>
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name" autocomplete="off">
+      </div>
+      <div>
+        <label>Description: </label>
+        <input type="text" formControlName="description" autocomplete="off"/>
+      </div>
+      <div>
+        <label>City: </label>
+        <input type="text" formControlName="city" autocomplete="off"/>
+      </div>
+      <button mat-raised-button type="submit">Create</button>
+    </form>
+  </div>
+
+  <div class="mentor-list">
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let mentor of mentors">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{mentor.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{mentor.description}}</p>
+            <p>{{mentor.city}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button (click)="onDelete(mentor)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+
+</div>
+

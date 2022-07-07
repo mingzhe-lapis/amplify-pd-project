@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "amplifypdmli",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authamplifypdmlif51b8679",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

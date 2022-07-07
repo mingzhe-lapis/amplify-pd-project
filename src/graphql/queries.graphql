@@ -1,0 +1,57 @@
+# this is an auto generated file. This will be overwritten
+query GetMentor($id: ID!) {
+  getMentor(id: $id) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+  }
+}
+query ListMentors(
+  $filter: ModelMentorFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMentors(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      city
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetMentee($id: ID!) {
+  getMentee(id: $id) {
+    id
+    name
+    description
+    city
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListMentees(
+  $filter: ModelMenteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMentees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      city
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+  }
+}
